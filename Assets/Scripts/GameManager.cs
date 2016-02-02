@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour {
 			currentPlayerIndex = 0;
 		}
 	}
-	
+	//test comment
 	public void moveCurrentPlayer(Tile destTile) {
 		players [currentPlayerIndex].gridPosition = destTile.gridPosition;
 		players [currentPlayerIndex].moveDestination = destTile.transform.position + 1.5f * Vector3.up;
