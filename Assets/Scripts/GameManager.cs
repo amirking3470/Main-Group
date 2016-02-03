@@ -117,8 +117,8 @@ public class GameManager : MonoBehaviour {
 		players.Add(player);
 		//* CURRENTLY COMMENTED OUT AI, NEEDS TO BE WORKED ON BEFORE ITS ADDED BACK IN *//
 		//* COMBAT NEEDS TO BE APPLIED TO IT, AND IT NEEDS TO BE ABLE TO ATTACK AS WELL AS MOVE? *//
-		//AIPlayer aiplayer = ((GameObject)Instantiate(AIPlayerPrefab, new Vector3(6 - Mathf.Floor(mapSize/2),1.5f, -4 + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<AIPlayer>();
+		AIPlayer aiplayer = ((GameObject)Instantiate(AIPlayerPrefab, new Vector3(6 - Mathf.Floor(mapSize/2),1.5f, -4 + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<AIPlayer>();
 		
-		//players.Add(aiplayer);
+		players.Add(aiplayer);
 	}
 }
