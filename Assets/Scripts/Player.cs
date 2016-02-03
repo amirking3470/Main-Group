@@ -13,6 +13,8 @@ public class Player : MonoBehaviour {
 	public bool moving = false; //variable for the attacking and moving buttons
 	public bool attacking = false;
 
+
+	public bool ranged = false;
 	public int HP = 25;
 	public string playerName = "JohnMadden";
 	public float attackChance = 0.75f;

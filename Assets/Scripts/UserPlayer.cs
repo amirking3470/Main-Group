@@ -37,6 +37,50 @@ public class UserPlayer : Player {
 		base.TurnUpdate ();
 	}
 
+	public void rangedHighlight () {
+		if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].ranged == true) {
+			if (attacking == true) {
+				int xPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
+				int yPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
+				for (int i = 3; i >= 0; i--) {
+					for (int j = 3; j >= 0; j--) {
+						GameManager.instance.map [xPot + i] [yPot + j].transform.GetComponent<Renderer> ().material.color = Color.green;
+					}
+					for (int j = 0; j <= 3; j++) {
+						GameManager.instance.map [xPot - i] [yPot - j].transform.GetComponent<Renderer> ().material.color = Color.green;
+					}
+				}
+				for (int i = 0; i <= 3; i++) {
+					for (int j = 3; j >= 0; j--) {
+						GameManager.instance.map [xPot - i] [yPot + j].transform.GetComponent<Renderer> ().material.color = Color.green;
+					}
+					for (int j = 0; j <= 3; j++) {
+						GameManager.instance.map [xPot + i] [yPot - j].transform.GetComponent<Renderer> ().material.color = Color.green;
+					}
+				}
+			} else if (attacking == false) {
+				int xPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
+				int yPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
+				for (int i = 3; i >= 0; i--) {
+					for (int j = 3; j >= 0; j--) {
+						GameManager.instance.map[xPot + i][yPot + j].transform.GetComponent<Renderer> ().material.color = Color.white;
+					}
+					for (int j = 0; j <= 3; j++) {
+						GameManager.instance.map[xPot - i][yPot - j].transform.GetComponent<Renderer> ().material.color = Color.white;
+					}
+				}
+				for (int i = 0; i <= 3; i++) {
+					for (int j = 3; j >= 0; j--) {
+						GameManager.instance.map[xPot - i][yPot + j].transform.GetComponent<Renderer> ().material.color = Color.white;
+					}
+					for (int j = 0; j <= 3; j++) {
+						GameManager.instance.map[xPot + i][yPot - j].transform.GetComponent<Renderer> ().material.color = Color.white;
+					}
+				}
+			}
+		}
+	}
+
 	public override void TurnOnGUI () {
 		//* Adding GUI elements, I completly followed the tutorial here, so I dont know much about it *//
 		//* AMIR AND JEFF, PLAY WITH THIS POTENTALLY? MAYBE TWEAK IT A BIT *//
@@ -51,9 +95,11 @@ public class UserPlayer : Player {
 			if (!moving) {
 				moving = true;
 				attacking = false;
+				rangedHighlight ();
 			} else {
 				moving = false;
 				attacking = false;
+				rangedHighlight ();
 			}
 		}
 
@@ -64,9 +110,11 @@ public class UserPlayer : Player {
 			if (!attacking) {
 				moving = false;
 				attacking = true;
+				rangedHighlight ();
 			} else {
 				moving = false;
 				attacking = false;
+				rangedHighlight ();
 			}
 		}
 
@@ -78,6 +126,7 @@ public class UserPlayer : Player {
 			moving = false;
 			attacking = false;
 			GameManager.instance.nextTurn();
+			rangedHighlight ();
 		}
 
 		base.TurnOnGUI ();

@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 	public int mapSize = 11; //Default map size, standard generates an 12/12 grid, but can be made bigger on the game manager object in editor
 	//* We need to find out a way to be able to generate custom grid sizes! Ie: 15/10 //*
 	
-	List <List<Tile>> map = new List<List<Tile>>(); //A 2d list, holding pretty much an array of all grid points
+	public List <List<Tile>> map = new List<List<Tile>>(); //A 2d list, holding pretty much an array of all grid points
 	public List <Player> players = new List<Player>(); //a 1d list, holding each player object's information
 	public int currentPlayerIndex = 0; //an int for tracking number of players
 	
@@ -61,26 +61,48 @@ public class GameManager : MonoBehaviour {
 		}
 
 		if (target != null) {
-
-			if (players [currentPlayerIndex].gridPosition.x >= target.gridPosition.x - 1 && players [currentPlayerIndex].gridPosition.x <= target.gridPosition.x + 1 &&
-			    players [currentPlayerIndex].gridPosition.y >= target.gridPosition.y - 1 && players [currentPlayerIndex].gridPosition.y <= target.gridPosition.y + 1) {
-				//checking to see if the selected target is adjacent, will have to be changed when we add ranged characters
-				players [currentPlayerIndex].actionPoints--;
-				//attack logic
-				//roll to hit
-				bool hit = Random.Range (0.0f, 1.0f) <= players [currentPlayerIndex].attackChance;
-					
-				if (hit) {
-					//damage logic
-					int amountOfDamage = (int)Mathf.Floor (players [currentPlayerIndex].damageBase + Random.Range (0, players [currentPlayerIndex].damageRollSides));
-					target.HP -= amountOfDamage;
+			if (players [currentPlayerIndex].ranged != true) {
+				if (players [currentPlayerIndex].gridPosition.x >= target.gridPosition.x - 1 && players [currentPlayerIndex].gridPosition.x <= target.gridPosition.x + 1 &&
+				    players [currentPlayerIndex].gridPosition.y >= target.gridPosition.y - 1 && players [currentPlayerIndex].gridPosition.y <= target.gridPosition.y + 1) {
+					//checking to see if the selected target is adjacent, will have to be changed when we add ranged characters
+					players [currentPlayerIndex].actionPoints--;
+					//attack logic
+					//roll to hit
+					bool hit = Random.Range (0.0f, 1.0f) <= players [currentPlayerIndex].attackChance;
 						
-					Debug.Log (players [currentPlayerIndex].playerName + " successfuly hit " + target.playerName + " for " + amountOfDamage + "damage!");
+					if (hit) {
+						//damage logic
+						int amountOfDamage = (int)Mathf.Floor (players [currentPlayerIndex].damageBase + Random.Range (0, players [currentPlayerIndex].damageRollSides));
+						target.HP -= amountOfDamage;
+						
+						Debug.Log (players [currentPlayerIndex].playerName + " successfuly hit " + target.playerName + " for " + amountOfDamage + "damage!");
+					} else {
+						Debug.Log (players [currentPlayerIndex].playerName + " missed " + target.playerName);
+					}
 				} else {
-					Debug.Log (players [currentPlayerIndex].playerName + " missed " + target.playerName);
+					Debug.Log ("Target is not adjacent!");
 				}
-			} else {
-				Debug.Log ("Target is not adjacent!");
+			} else { //ranged attack
+				if (players [currentPlayerIndex].gridPosition.x >= target.gridPosition.x - 3 && players [currentPlayerIndex].gridPosition.x <= target.gridPosition.x + 3 &&
+					players [currentPlayerIndex].gridPosition.y >= target.gridPosition.y - 3 && players [currentPlayerIndex].gridPosition.y <= target.gridPosition.y + 3) {
+
+					players [currentPlayerIndex].actionPoints--;
+					//attack logic
+					//roll to hit
+					bool hit = Random.Range (0.0f, 1.0f) <= players [currentPlayerIndex].attackChance;
+
+					if (hit) {
+						//damage logic
+						int amountOfDamage = (int)Mathf.Floor (players [currentPlayerIndex].damageBase + Random.Range (0, players [currentPlayerIndex].damageRollSides));
+						target.HP -= amountOfDamage;
+
+						Debug.Log (players [currentPlayerIndex].playerName + " successfuly hit " + target.playerName + " for " + amountOfDamage + "damage!");
+					} else {
+						Debug.Log (players [currentPlayerIndex].playerName + " missed " + target.playerName);
+					}
+				} else {
+					Debug.Log ("Target is not in range!");
+				}
 			}
 		}
 	}
@@ -104,6 +126,7 @@ public class GameManager : MonoBehaviour {
 		player = ((GameObject)Instantiate(UserPlayerPrefab, new Vector3(0 - Mathf.Floor(mapSize/2),1.7f, -0 + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<UserPlayer>();
 		player.gridPosition = new Vector2 (0, 0);
 		player.playerName = "Bob";
+		player.ranged = true;
 		players.Add(player);
 		
 		player = ((GameObject)Instantiate(UserPlayerPrefab, new Vector3((mapSize-1) - Mathf.Floor(mapSize/2),1.7f, -(mapSize-1) + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<UserPlayer>();
