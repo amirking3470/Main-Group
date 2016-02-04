@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	public void nextTurn() {
+		UserPlayer.instance.rangedHighlight ();
 		if (currentPlayerIndex + 1 < players.Count) { //Current player loop, when going out of bounds swaps back to the first palyer
 			currentPlayerIndex++;
 		} else {
@@ -85,7 +86,7 @@ public class GameManager : MonoBehaviour {
 			} else { //ranged attack
 				if (players [currentPlayerIndex].gridPosition.x >= target.gridPosition.x - 3 && players [currentPlayerIndex].gridPosition.x <= target.gridPosition.x + 3 &&
 					players [currentPlayerIndex].gridPosition.y >= target.gridPosition.y - 3 && players [currentPlayerIndex].gridPosition.y <= target.gridPosition.y + 3) {
-
+					UserPlayer.instance.rangedHighlight ();
 					players [currentPlayerIndex].actionPoints--;
 					//attack logic
 					//roll to hit
@@ -100,6 +101,7 @@ public class GameManager : MonoBehaviour {
 					} else {
 						Debug.Log (players [currentPlayerIndex].playerName + " missed " + target.playerName);
 					}
+					UserPlayer.instance.rangedHighlight ();
 				} else {
 					Debug.Log ("Target is not in range!");
 				}

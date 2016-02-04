@@ -8,6 +8,10 @@ public class UserPlayer : Player {
 	void Start () {
 	
 	}
+	public static UserPlayer instance;
+	void Awake() {
+		instance = this; //initilizing the gamemanager instance on line 7
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -125,8 +129,8 @@ public class UserPlayer : Player {
 			actionPoints = 2;
 			moving = false;
 			attacking = false;
-			GameManager.instance.nextTurn();
 			rangedHighlight ();
+			GameManager.instance.nextTurn();
 		}
 
 		base.TurnOnGUI ();

@@ -367,6 +367,7 @@ MonoBehaviour:
   defenseReduction: 0.15
   damageBase: 5
   damageRollSides: 6
+  actionPoints: 2
 --- !u!23 &1069939034
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -622,3 +623,4 @@ MonoBehaviour:
   defenseReduction: 0.15
   damageBase: 5
   damageRollSides: 6
+  actionPoints: 2
