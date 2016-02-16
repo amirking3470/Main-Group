@@ -27,7 +27,7 @@ public class Player : MonoBehaviour {
 	public int actionPoints = 2;
 	
 	void Awake () {
-		moveDestination = transform.position;
+
 	}
 	
 	// Use this for initialization

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject TilePrefab; //Main prefab for the tile
 	public GameObject UserPlayerPrefab; //Main PLayer prefab for player controlled units, will be divided as we add more units
 	public GameObject AIPlayerPrefab; //Main player prefab for the AI
+	public GameObject RangedUserPlayerPrefab; //ranged prefab
 	
 	public int mapSize = 11; //Default map size, standard generates an 12/12 grid, but can be made bigger on the game manager object in editor
 	//* We need to find out a way to be able to generate custom grid sizes! Ie: 15/10 //*
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	public void nextTurn() {
-		UserPlayer.instance.rangedHighlight ();
+		RangedUserPlayer.instance.rangedHighlight ();
 		if (currentPlayerIndex + 1 < players.Count) { //Current player loop, when going out of bounds swaps back to the first palyer
 			currentPlayerIndex++;
 		} else {
@@ -86,7 +87,7 @@ public class GameManager : MonoBehaviour {
 			} else { //ranged attack
 				if (players [currentPlayerIndex].gridPosition.x >= target.gridPosition.x - 3 && players [currentPlayerIndex].gridPosition.x <= target.gridPosition.x + 3 &&
 					players [currentPlayerIndex].gridPosition.y >= target.gridPosition.y - 3 && players [currentPlayerIndex].gridPosition.y <= target.gridPosition.y + 3) {
-					UserPlayer.instance.rangedHighlight ();
+					RangedUserPlayer.instance.rangedHighlight ();
 					players [currentPlayerIndex].actionPoints--;
 					//attack logic
 					//roll to hit
@@ -101,7 +102,7 @@ public class GameManager : MonoBehaviour {
 					} else {
 						Debug.Log (players [currentPlayerIndex].playerName + " missed " + target.playerName);
 					}
-					UserPlayer.instance.rangedHighlight ();
+					RangedUserPlayer.instance.rangedHighlight ();
 				} else {
 					Debug.Log ("Target is not in range!");
 				}
@@ -125,11 +126,6 @@ public class GameManager : MonoBehaviour {
 	void generatePlayers() {
 		UserPlayer player;
 		//Adding players, using prefabs with relevant code attached
-		player = ((GameObject)Instantiate(UserPlayerPrefab, new Vector3(0 - Mathf.Floor(mapSize/2),1.7f, -0 + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<UserPlayer>();
-		player.gridPosition = new Vector2 (0, 0);
-		player.playerName = "Bob";
-		player.ranged = true;
-		players.Add(player);
 		
 		player = ((GameObject)Instantiate(UserPlayerPrefab, new Vector3((mapSize-1) - Mathf.Floor(mapSize/2),1.7f, -(mapSize-1) + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<UserPlayer>();
 		player.gridPosition = new Vector2 ((mapSize - 1), (mapSize - 1));
@@ -140,6 +136,12 @@ public class GameManager : MonoBehaviour {
 		player.gridPosition = new Vector2 (4, 4);
 		player.playerName = "Tim";
 		players.Add(player);
+
+		RangedUserPlayer rangedplayer = ((GameObject)Instantiate(RangedUserPlayerPrefab, new Vector3(0 - Mathf.Floor(mapSize/2),1.7f, -0 + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<RangedUserPlayer>();
+		rangedplayer.gridPosition = new Vector2 (0, 0);
+		rangedplayer.ranged = true;
+		rangedplayer.playerName = "Bob";
+		players.Add(rangedplayer);
 		//* CURRENTLY COMMENTED OUT AI, NEEDS TO BE WORKED ON BEFORE ITS ADDED BACK IN *//
 		//* COMBAT NEEDS TO BE APPLIED TO IT, AND IT NEEDS TO BE ABLE TO ATTACK AS WELL AS MOVE? *//
 		//AIPlayer aiplayer = ((GameObject)Instantiate(AIPlayerPrefab, new Vector3(6 - Mathf.Floor(mapSize/2),1.5f, -4 + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<AIPlayer>();
