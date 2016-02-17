@@ -308,6 +308,8 @@ MonoBehaviour:
   TilePrefab: {fileID: 167718, guid: 87211d98c795bf0419ea49b909cc74bc, type: 2}
   UserPlayerPrefab: {fileID: 140328, guid: 47f9fbd63abf0934cbe62a25b5518989, type: 2}
   AIPlayerPrefab: {fileID: 169554, guid: 577bbc001948c6d4e8da2da63437801b, type: 2}
+  RangedUserPlayerPrefab: {fileID: 176134, guid: eadf70319bbc7ff41a15ee96e3080fba,
+    type: 2}
   mapSize: 11
   players: []
   currentPlayerIndex: 0
@@ -361,6 +363,7 @@ MonoBehaviour:
   moveSpeed: 10
   moving: 0
   attacking: 0
+  ranged: 0
   HP: 25
   playerName: JohnMadden
   attackChance: 0.75
@@ -429,6 +432,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!1001 &1132000658
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 477276, guid: eadf70319bbc7ff41a15ee96e3080fba, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477276, guid: eadf70319bbc7ff41a15ee96e3080fba, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 477276, guid: eadf70319bbc7ff41a15ee96e3080fba, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 477276, guid: eadf70319bbc7ff41a15ee96e3080fba, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477276, guid: eadf70319bbc7ff41a15ee96e3080fba, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477276, guid: eadf70319bbc7ff41a15ee96e3080fba, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477276, guid: eadf70319bbc7ff41a15ee96e3080fba, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 477276, guid: eadf70319bbc7ff41a15ee96e3080fba, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: eadf70319bbc7ff41a15ee96e3080fba, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1565006373
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +662,7 @@ MonoBehaviour:
   moveSpeed: 10
   moving: 0
   attacking: 0
+  ranged: 0
   HP: 25
   playerName: JohnMadden
   attackChance: 0.75

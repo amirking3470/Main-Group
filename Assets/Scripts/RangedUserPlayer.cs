@@ -15,6 +15,7 @@ public class RangedUserPlayer : Player {
 		instance = this; //initilizing the gamemanager instance on line 7
 	}
 
+
 	// Update is called once per frame
 	void Update () {
 		if (GameManager.instance.players [GameManager.instance.currentPlayerIndex] == this) {
@@ -58,10 +59,10 @@ public class RangedUserPlayer : Player {
 						y = yPot + j;
 
 						if (xneg == true) {
-							x = 0;
+							x = xPot + 0;
 						}
 						if (yneg == true) {
-							y = 0;
+							y = yPot + 0;
 						}
 						GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.green;
 					}
@@ -72,10 +73,10 @@ public class RangedUserPlayer : Player {
 						y = yPot - j;
 
 						if (xneg == true) {
-							x = 0;
+							x = xPot + 0;
 						}
 						if (yneg == true) {
-							y = 0;
+							y = yPot + 0;
 						}
 						GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.green;
 					}
@@ -88,10 +89,10 @@ public class RangedUserPlayer : Player {
 						y = yPot + j;
 
 						if (xneg == true) {
-							x = 0;
+							x = xPot + 0;
 						}
 						if (yneg == true) {
-							y = 0;
+							y = yPot + 0;
 						}
 						GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.green;
 					}
@@ -102,10 +103,10 @@ public class RangedUserPlayer : Player {
 						y = yPot - j;
 
 						if (xneg == true) {
-							x = 0;
+							x = xPot + 0;
 						}
 						if (yneg == true) {
-							y = 0;
+							y = yPot + 0;
 						}
 						GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.green;
 					}
@@ -123,10 +124,10 @@ public class RangedUserPlayer : Player {
 						y = yPot + j;
 
 						if (xneg == true) {
-							x = 0;
+							x = xPot + 0;
 						}
 						if (yneg == true) {
-							y = 0;
+							y = yPot + 0;
 						}
 
 						GameManager.instance.map[x][y].transform.GetComponent<Renderer> ().material.color = Color.white;
@@ -138,10 +139,10 @@ public class RangedUserPlayer : Player {
 						y = yPot - j;
 
 						if (xneg == true) {
-							x = 0;
+							x = xPot + 0;
 						}
 						if (yneg == true) {
-							y = 0;
+							y = yPot + 0;
 						}
 
 						GameManager.instance.map[x][y].transform.GetComponent<Renderer> ().material.color = Color.white;
@@ -155,10 +156,10 @@ public class RangedUserPlayer : Player {
 						y = yPot + j;
 
 						if (xneg == true) {
-							x = 0;
+							x = xPot + 0;
 						}
 						if (yneg == true) {
-							y = 0;
+							y = yPot + 0;
 						}
 
 						GameManager.instance.map[x][y].transform.GetComponent<Renderer> ().material.color = Color.white;
@@ -170,10 +171,10 @@ public class RangedUserPlayer : Player {
 						y = yPot - j;
 
 						if (xneg == true) {
-							x = 0;
+							x = xPot + 0;
 						}
 						if (yneg == true) {
-							y = 0;
+							y = yPot + 0;
 						}
 
 						GameManager.instance.map[x][y].transform.GetComponent<Renderer> ().material.color = Color.white;

@@ -127,20 +127,27 @@ public class GameManager : MonoBehaviour {
 		UserPlayer player;
 		//Adding players, using prefabs with relevant code attached
 		
-		player = ((GameObject)Instantiate(UserPlayerPrefab, new Vector3((mapSize-1) - Mathf.Floor(mapSize/2),1.7f, -(mapSize-1) + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<UserPlayer>();
+		player = ((GameObject)Instantiate(UserPlayerPrefab, new Vector3((mapSize-1) - Mathf.Floor(mapSize/2),1.5f, -(mapSize-1) + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<UserPlayer>();
 		player.gridPosition = new Vector2 ((mapSize - 1), (mapSize - 1));
 		player.playerName = "Hank";
+		player.moveDestination = new Vector3((mapSize-1) - Mathf.Floor(mapSize/2),1.5f, -(mapSize-1) + Mathf.Floor(mapSize/2));
 		players.Add(player);
 				
-		player = ((GameObject)Instantiate(UserPlayerPrefab, new Vector3(4 - Mathf.Floor(mapSize/2),1.7f, -4 + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<UserPlayer>();
-		player.gridPosition = new Vector2 (4, 4);
+		player = ((GameObject)Instantiate(UserPlayerPrefab, new Vector3(0 - Mathf.Floor(mapSize/2),1.5f, -10 + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<UserPlayer>();
+		player.gridPosition = new Vector2 (0, 10);
+		player.moveDestination = new Vector3 (0 - Mathf.Floor (mapSize / 2), 1.5f, -10 + Mathf.Floor (mapSize / 2));
 		player.playerName = "Tim";
 		players.Add(player);
 
-		RangedUserPlayer rangedplayer = ((GameObject)Instantiate(RangedUserPlayerPrefab, new Vector3(0 - Mathf.Floor(mapSize/2),1.7f, -0 + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<RangedUserPlayer>();
+		RangedUserPlayer rangedplayer = ((GameObject)Instantiate(RangedUserPlayerPrefab, new Vector3(0 - Mathf.Floor(mapSize/2),1.5f, -0 + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<RangedUserPlayer>();
 		rangedplayer.gridPosition = new Vector2 (0, 0);
 		rangedplayer.ranged = true;
 		rangedplayer.playerName = "Bob";
+		rangedplayer.moveDestination = new Vector3 (0 - Mathf.Floor (mapSize / 2), 1.5f, -0 + Mathf.Floor (mapSize / 2));
+		rangedplayer.HP = 15;
+		rangedplayer.attackChance = 0.95f;
+		rangedplayer.defenseReduction = 0.20f;
+		rangedplayer.damageRollSides = 10;
 		players.Add(rangedplayer);
 		//* CURRENTLY COMMENTED OUT AI, NEEDS TO BE WORKED ON BEFORE ITS ADDED BACK IN *//
 		//* COMBAT NEEDS TO BE APPLIED TO IT, AND IT NEEDS TO BE ABLE TO ATTACK AS WELL AS MOVE? *//
