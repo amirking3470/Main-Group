@@ -1,20 +1,20 @@
-//* THIS IS THE CURRENT HUMAN CONTROLLED PLAYER FUNCTION, IT IS AN EXTENSION OF THE DEFAULT PLAYER FILE, OF WHICH ALL CODE IS COPIED *//
+﻿//* THIS IS THE CURRENT HUMAN CONTROLLED PLAYER FUNCTION, IT IS AN EXTENSION OF THE DEFAULT PLAYER FILE, OF WHICH ALL CODE IS COPIED *//
 using UnityEngine;
 using System.Collections;
 
-public class UserPlayer : Player {
-	
+public class TankUserPlayer : Player {
+
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 
-	public static UserPlayer instance;
+	public static TankUserPlayer instance;
 
 	void Awake() {
 		instance = this; //initilizing the gamemanager instance on line 7
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (GameManager.instance.players [GameManager.instance.currentPlayerIndex] == this) {
@@ -28,7 +28,7 @@ public class UserPlayer : Player {
 			transform.rotation = Quaternion.Euler (new Vector3 (90,0,0));
 		}
 	}
-	
+
 	public override void TurnUpdate ()
 	{
 		if (Vector3.Distance(moveDestination, transform.position) > 0.1f) {
@@ -39,7 +39,7 @@ public class UserPlayer : Player {
 				actionPoints--; //when the move is complete, the action point is removed
 			}
 		}
-		
+
 		base.TurnUpdate ();
 	}
 

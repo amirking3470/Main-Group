@@ -28,8 +28,25 @@ public class Tile : MonoBehaviour {
 	}
 	
 	void OnMouseExit() {
-		transform.GetComponent<Renderer>().material.color = Color.white; 
-		//changing the color of the tile back to the default white, will have to be changed when we add textures to tiles
+		if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].attacking == true) {
+			if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].ranged == true) {
+				if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x >= this.gridPosition.x - 3 &&
+				    GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x <= this.gridPosition.x + 3 &&
+				    GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y >= this.gridPosition.y - 3 &&
+				    GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y <= this.gridPosition.y + 3) {
+					transform.GetComponent<Renderer> ().material.color = Color.green; 
+				} else {
+					transform.GetComponent<Renderer>().material.color = Color.white; 
+					//changing the color of the tile back to the default white, will have to be changed when we add textures to tiles
+				}
+			} else {
+				transform.GetComponent<Renderer>().material.color = Color.white; 
+				//changing the color of the tile back to the default white, will have to be changed when we add textures to tiles
+			}
+		} else {
+			transform.GetComponent<Renderer>().material.color = Color.white; 
+			//changing the color of the tile back to the default white, will have to be changed when we add textures to tiles
+		}
 	}
 	
 	
