@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject UserPlayerPrefab; //Main PLayer prefab for player controlled units, will be divided as we add more units
 	public GameObject AIPlayerPrefab; //Main player prefab for the AI
 	public GameObject RangedUserPlayerPrefab; //ranged prefab
+	public GameObject TankUserPlayerPrefab; //tank prefab
 	
 	public int mapSize = 11; //Default map size, standard generates an 12/12 grid, but can be made bigger on the game manager object in editor
 	//* We need to find out a way to be able to generate custom grid sizes! Ie: 15/10 //*
@@ -133,11 +134,16 @@ public class GameManager : MonoBehaviour {
 		player.moveDestination = new Vector3((mapSize-1) - Mathf.Floor(mapSize/2),1.5f, -(mapSize-1) + Mathf.Floor(mapSize/2));
 		players.Add(player);
 				
-		player = ((GameObject)Instantiate(UserPlayerPrefab, new Vector3(0 - Mathf.Floor(mapSize/2),1.5f, -10 + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<UserPlayer>();
-		player.gridPosition = new Vector2 (0, 10);
-		player.moveDestination = new Vector3 (0 - Mathf.Floor (mapSize / 2), 1.5f, -10 + Mathf.Floor (mapSize / 2));
-		player.playerName = "Tim";
-		players.Add(player);
+		TankUserPlayer tankplayer = ((GameObject)Instantiate(TankUserPlayerPrefab, new Vector3(0 - Mathf.Floor(mapSize/2),1.5f, -10 + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<TankUserPlayer>();
+		tankplayer.gridPosition = new Vector2 (0, 10);
+		tankplayer.moveDestination = new Vector3 (0 - Mathf.Floor (mapSize / 2), 1.5f, -10 + Mathf.Floor (mapSize / 2));
+		tankplayer.playerName = "Tim";
+		tankplayer.HP = 35;
+		tankplayer.attackChance = 0.75f;
+		tankplayer.defenseReduction = 0.30f;
+		tankplayer.damageRollSides = 4;
+		tankplayer.actionPoints = 3;
+		players.Add(tankplayer);
 
 		RangedUserPlayer rangedplayer = ((GameObject)Instantiate(RangedUserPlayerPrefab, new Vector3(0 - Mathf.Floor(mapSize/2),1.5f, -0 + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<RangedUserPlayer>();
 		rangedplayer.gridPosition = new Vector2 (0, 0);
