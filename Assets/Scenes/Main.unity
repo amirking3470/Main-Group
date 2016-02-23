@@ -311,7 +311,8 @@ MonoBehaviour:
   RangedUserPlayerPrefab: {fileID: 176134, guid: eadf70319bbc7ff41a15ee96e3080fba,
     type: 2}
   TankUserPlayerPrefab: {fileID: 166144, guid: f54ad5d4dbe333646ab666ebe675c6d2, type: 2}
-  mapSize: 11
+  mapSizeX: 11
+  mapSizeY: 18
   players: []
   currentPlayerIndex: 0
 --- !u!4 &689635306

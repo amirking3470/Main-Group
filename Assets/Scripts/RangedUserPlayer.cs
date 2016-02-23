@@ -53,8 +53,8 @@ public class RangedUserPlayer : Player {
 				int y;
 				for (int i = 3; i >= 0; i--) {
 					for (int j = 3; j >= 0; j--) {
-						bool xneg = (xPot + i) > (GameManager.instance.mapSize - 1);
-						bool yneg = (yPot + j) > (GameManager.instance.mapSize - 1);
+						bool xneg = (xPot + i) > (GameManager.instance.mapSizeX - 1);
+						bool yneg = (yPot + j) > (GameManager.instance.mapSizeY - 1);
 						x = xPot + i;
 						y = yPot + j;
 
@@ -84,7 +84,7 @@ public class RangedUserPlayer : Player {
 				for (int i = 0; i <= 3; i++) {
 					for (int j = 3; j >= 0; j--) {
 						bool xneg = (xPot - i) < 0;
-						bool yneg = (yPot + j) > (GameManager.instance.mapSize - 1);
+						bool yneg = (yPot + j) > (GameManager.instance.mapSizeY - 1);
 						x = xPot - i;
 						y = yPot + j;
 
@@ -97,7 +97,7 @@ public class RangedUserPlayer : Player {
 						GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.green;
 					}
 					for (int j = 0; j <= 3; j++) {
-						bool xneg = (xPot + i) > (GameManager.instance.mapSize - 1);
+						bool xneg = (xPot + i) > (GameManager.instance.mapSizeX - 1);
 						bool yneg = (yPot - j) < 0;
 						x = xPot + i;
 						y = yPot - j;
@@ -118,8 +118,8 @@ public class RangedUserPlayer : Player {
 				int y;
 				for (int i = 3; i >= 0; i--) {
 					for (int j = 3; j >= 0; j--) {
-						bool xneg = (xPot + i) > (GameManager.instance.mapSize - 1);
-						bool yneg = (yPot + j) > (GameManager.instance.mapSize - 1);
+						bool xneg = (xPot + i) > (GameManager.instance.mapSizeX - 1);
+						bool yneg = (yPot + j) > (GameManager.instance.mapSizeY - 1);
 						x = xPot + i;
 						y = yPot + j;
 
@@ -151,7 +151,7 @@ public class RangedUserPlayer : Player {
 				for (int i = 0; i <= 3; i++) {
 					for (int j = 3; j >= 0; j--) {
 						bool xneg = (xPot - i) < 0;
-						bool yneg = (yPot + j) > (GameManager.instance.mapSize - 1);
+						bool yneg = (yPot + j) > (GameManager.instance.mapSizeY - 1);
 						x = xPot - i;
 						y = yPot + j;
 
@@ -165,7 +165,7 @@ public class RangedUserPlayer : Player {
 						GameManager.instance.map[x][y].transform.GetComponent<Renderer> ().material.color = Color.white;
 					}
 					for (int j = 0; j <= 3; j++) {
-						bool xneg = (xPot + i) > (GameManager.instance.mapSize - 1);
+						bool xneg = (xPot + i) > (GameManager.instance.mapSizeX - 1);
 						bool yneg = (yPot - j) < 0;
 						x = xPot + i;
 						y = yPot - j;
