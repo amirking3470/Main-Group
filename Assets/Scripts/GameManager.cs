@@ -52,7 +52,11 @@ public class GameManager : MonoBehaviour {
 
 	public void moveCurrentPlayer(Tile destTile) {
 		players [currentPlayerIndex].gridPosition = destTile.gridPosition; //Updating the current player's position as they move
-		players [currentPlayerIndex].moveDestination = destTile.transform.position + 1.5f * Vector3.up; //moves the current player the the selected tile
+		if (players[currentPlayerIndex].ranged == true) {
+			players [currentPlayerIndex].moveDestination = destTile.transform.position + 0.5f * Vector3.up; //moves the current player the the selected tile
+		} else {
+			players [currentPlayerIndex].moveDestination = destTile.transform.position + 1.5f * Vector3.up; //moves the current player the the selected tile
+		}
 	}
 
 
@@ -135,9 +139,9 @@ public class GameManager : MonoBehaviour {
 		player.moveDestination = new Vector3((mapSizeX-1) - Mathf.Floor(mapSizeX/2),1.5f, -(mapSizeY-1) + Mathf.Floor(mapSizeY/2));
 		players.Add(player);
 				
-		TankUserPlayer tankplayer = ((GameObject)Instantiate(TankUserPlayerPrefab, new Vector3(0 - Mathf.Floor(mapSizeX/2),1.5f, -10 + Mathf.Floor(mapSizeY/2)), Quaternion.Euler(new Vector3()))).GetComponent<TankUserPlayer>();
+		TankUserPlayer tankplayer = ((GameObject)Instantiate(TankUserPlayerPrefab, new Vector3(0 - Mathf.Floor(mapSizeX/2),0.5f, -10 + Mathf.Floor(mapSizeY/2)), Quaternion.Euler(new Vector3()))).GetComponent<TankUserPlayer>();
 		tankplayer.gridPosition = new Vector2 (0, 10);
-		tankplayer.moveDestination = new Vector3 (0 - Mathf.Floor (mapSizeX / 2), 1.5f, -10 + Mathf.Floor (mapSizeY / 2));
+		tankplayer.moveDestination = new Vector3 (0 - Mathf.Floor (mapSizeX / 2),0.5f, -10 + Mathf.Floor (mapSizeY / 2));
 		tankplayer.playerName = "Tim";
 		tankplayer.HP = 35;
 		tankplayer.attackChance = 0.75f;
