@@ -64,7 +64,7 @@ public class RangedUserPlayer : Player {
 						if (yneg == true) {
 							y = yPot + 0;
 						}
-						GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.green;
+						GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.magenta;
 					}
 					for (int j = 0; j <= 3; j++) {
 						bool xneg = (xPot - i) < 0;
@@ -78,7 +78,7 @@ public class RangedUserPlayer : Player {
 						if (yneg == true) {
 							y = yPot + 0;
 						}
-						GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.green;
+						GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.magenta;
 					}
 				}
 				for (int i = 0; i <= 3; i++) {
@@ -94,7 +94,7 @@ public class RangedUserPlayer : Player {
 						if (yneg == true) {
 							y = yPot + 0;
 						}
-						GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.green;
+						GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.magenta;
 					}
 					for (int j = 0; j <= 3; j++) {
 						bool xneg = (xPot + i) > (GameManager.instance.mapSizeX - 1);
@@ -108,7 +108,7 @@ public class RangedUserPlayer : Player {
 						if (yneg == true) {
 							y = yPot + 0;
 						}
-						GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.green;
+						GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.magenta;
 					}
 				}
 			} else if (attacking == false) {
