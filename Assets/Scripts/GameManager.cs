@@ -114,8 +114,8 @@ public class GameManager : MonoBehaviour {
 
 	void generateMap() {
 		map = new List<List<Tile>>(); //generatign the playing field, making a grid of tile prefabs, and storing their positiosn in a 2d list
-		List <Tile> row = new List<Tile>();
 		for (int i = 0; i < mapSizeX; i++) {
+			List <Tile> row = new List<Tile>();
 			for (int j = 0; j < mapSizeY; j++) {
 				Tile tile = ((GameObject)Instantiate(TilePrefab, new Vector3(i - Mathf.Floor(mapSizeX/2),0, -j + Mathf.Floor(mapSizeY/2)), Quaternion.Euler(new Vector3()))).GetComponent<Tile>();
 				tile.gridPosition = new Vector2(i, j);
@@ -123,9 +123,6 @@ public class GameManager : MonoBehaviour {
 			}
 			map.Add(row);
 		}
-		Tile badtile = ((GameObject)Instantiate(TilePrefab, new Vector3(0 - Mathf.Floor(mapSizeX/2),1, -0 + Mathf.Floor(mapSizeY/2)), Quaternion.Euler(new Vector3()))).GetComponent<Tile>();
-		badtile.gridPosition = new Vector2(0, 0);
-		row.Add (badtile);
 	}
 	
 	void generatePlayers() {
