@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0}
+  badTile: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

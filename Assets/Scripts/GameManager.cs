@@ -127,9 +127,12 @@ public class GameManager : MonoBehaviour {
 
 		Badmap = new List<List<Tile>>();
 		List <Tile> badrow = new List<Tile>();
-		Tile badtile = ((GameObject)Instantiate(TilePrefab, new Vector3(0 - Mathf.Floor(mapSizeX/2),1, -0 + Mathf.Floor(mapSizeY/2)), Quaternion.Euler(new Vector3()))).GetComponent<Tile>();
-		badtile.gridPosition = new Vector2(0, 0);
-		badrow.Add (badtile);
+		for (int x = 5; x < 10; x++) {
+			Tile badtile = ((GameObject)Instantiate (TilePrefab, new Vector3 (x - Mathf.Floor (mapSizeX / 2), 1, -8 + Mathf.Floor (mapSizeY / 2)), Quaternion.Euler (new Vector3 ()))).GetComponent<Tile> ();
+			badtile.gridPosition = new Vector2 (x, 8);
+			badtile.badTile = true;
+			badrow.Add (badtile);
+		}
 	}
 	
 	void generatePlayers() {
