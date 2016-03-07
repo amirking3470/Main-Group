@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour {
 	public int mapSizeY = 11;//Default map size, standard generates an 12/12 grid, but can be made bigger on the game manager object in editor
 	//* We need to find out a way to be able to generate custom grid sizes! Ie: 15/10 //*
 	
-	public List <List<Tile>> map = new List<List<Tile>>(); //A 2d list, holding pretty much an array of all grid points
+	public List <List<Tile>> map = new List<List<Tile>>(); 
+	public List <List<Tile>> Badmap = new List<List<Tile>>();//A 2d list, holding pretty much an array of all grid points
 	public List <Player> players = new List<Player>(); //a 1d list, holding each player object's information
 	public int currentPlayerIndex = 0; //an int for tracking number of players
 	
@@ -123,6 +124,12 @@ public class GameManager : MonoBehaviour {
 			}
 			map.Add(row);
 		}
+
+		Badmap = new List<List<Tile>>();
+		List <Tile> badrow = new List<Tile>();
+		Tile badtile = ((GameObject)Instantiate(TilePrefab, new Vector3(0 - Mathf.Floor(mapSizeX/2),1, -0 + Mathf.Floor(mapSizeY/2)), Quaternion.Euler(new Vector3()))).GetComponent<Tile>();
+		badtile.gridPosition = new Vector2(0, 0);
+		badrow.Add (badtile);
 	}
 	
 	void generatePlayers() {
@@ -146,20 +153,15 @@ public class GameManager : MonoBehaviour {
 		tankplayer.actionPoints = 3;
 		players.Add(tankplayer);
 
-		RangedUserPlayer rangedplayer = ((GameObject)Instantiate(RangedUserPlayerPrefab, new Vector3(0 - Mathf.Floor(mapSizeX/2),1.5f, -0 + Mathf.Floor(mapSizeY/2)), Quaternion.Euler(new Vector3()))).GetComponent<RangedUserPlayer>();
-		rangedplayer.gridPosition = new Vector2 (0, 0);
+		RangedUserPlayer rangedplayer = ((GameObject)Instantiate(RangedUserPlayerPrefab, new Vector3(5 - Mathf.Floor(mapSizeX/2),1.5f, -5 + Mathf.Floor(mapSizeY/2)), Quaternion.Euler(new Vector3()))).GetComponent<RangedUserPlayer>();
+		rangedplayer.gridPosition = new Vector2 (5, 5);
 		rangedplayer.ranged = true;
 		rangedplayer.playerName = "Bob";
-		rangedplayer.moveDestination = new Vector3 (0 - Mathf.Floor (mapSizeX / 2), 1.5f, -0 + Mathf.Floor (mapSizeY / 2));
+		rangedplayer.moveDestination = new Vector3 (5 - Mathf.Floor (mapSizeX / 2), 1.5f, -5 + Mathf.Floor (mapSizeY / 2));
 		rangedplayer.HP = 15;
 		rangedplayer.attackChance = 0.95f;
 		rangedplayer.defenseReduction = 0.20f;
 		rangedplayer.damageRollSides = 10;
 		players.Add(rangedplayer);
-		//* CURRENTLY COMMENTED OUT AI, NEEDS TO BE WORKED ON BEFORE ITS ADDED BACK IN *//
-		//* COMBAT NEEDS TO BE APPLIED TO IT, AND IT NEEDS TO BE ABLE TO ATTACK AS WELL AS MOVE? *//
-		//AIPlayer aiplayer = ((GameObject)Instantiate(AIPlayerPrefab, new Vector3(6 - Mathf.Floor(mapSize/2),1.5f, -4 + Mathf.Floor(mapSize/2)), Quaternion.Euler(new Vector3()))).GetComponent<AIPlayer>();
-		
-		//players.Add(aiplayer);
 	}
 }

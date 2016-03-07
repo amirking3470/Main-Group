@@ -225,7 +225,7 @@ public class RangedUserPlayer : Player {
 		buttonRect = new Rect (0, Screen.height - buttonHeight * 1, buttonWidth, buttonHeight);
 
 		if (GUI.Button (buttonRect, "End Turn")) {
-			actionPoints = 2;
+			actionPoints = 3;
 			moving = false;
 			attacking = false;
 			rangedHighlight ();
