@@ -58,9 +58,11 @@ public class TankUserPlayer : Player {
 			if (!moving) {
 				moving = true;
 				attacking = false;
+				movingHighlight ();
 			} else {
 				moving = false;
 				attacking = false;
+				movingHighlight ();
 			}
 		}
 
@@ -71,9 +73,11 @@ public class TankUserPlayer : Player {
 			if (!attacking) {
 				moving = false;
 				attacking = true;
+				movingHighlight ();
 			} else {
 				moving = false;
 				attacking = false;
+				movingHighlight ();
 			}
 		}
 
@@ -84,6 +88,7 @@ public class TankUserPlayer : Player {
 			actionPoints = 2;
 			moving = false;
 			attacking = false;
+			movingHighlight ();
 			GameManager.instance.nextTurn();
 		}
 

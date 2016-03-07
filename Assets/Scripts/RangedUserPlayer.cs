@@ -199,10 +199,12 @@ public class RangedUserPlayer : Player {
 				moving = true;
 				attacking = false;
 				rangedHighlight ();
+				movingHighlight ();
 			} else {
 				moving = false;
 				attacking = false;
 				rangedHighlight ();
+				movingHighlight ();
 			}
 		}
 
@@ -214,10 +216,12 @@ public class RangedUserPlayer : Player {
 				moving = false;
 				attacking = true;
 				rangedHighlight ();
+				movingHighlight ();
 			} else {
 				moving = false;
 				attacking = false;
 				rangedHighlight ();
+				movingHighlight ();
 			}
 		}
 
@@ -229,6 +233,7 @@ public class RangedUserPlayer : Player {
 			moving = false;
 			attacking = false;
 			rangedHighlight ();
+			movingHighlight ();
 			GameManager.instance.nextTurn();
 		}
 
