@@ -5,6 +5,7 @@ using System.Collections;
 public class Tile : MonoBehaviour {
 	
 	public Vector2 gridPosition = Vector2.zero;
+	public bool blocker = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -34,7 +35,7 @@ public class Tile : MonoBehaviour {
 				    GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x <= this.gridPosition.x + 3 &&
 				    GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y >= this.gridPosition.y - 3 &&
 				    GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y <= this.gridPosition.y + 3) {
-					transform.GetComponent<Renderer> ().material.color = Color.green; 
+					transform.GetComponent<Renderer> ().material.color = Color.magenta; 
 				} else {
 					transform.GetComponent<Renderer>().material.color = Color.white; 
 					//changing the color of the tile back to the default white, will have to be changed when we add textures to tiles
