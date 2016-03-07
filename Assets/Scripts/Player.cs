@@ -191,4 +191,75 @@ public class Player : MonoBehaviour {
 				}
 			}
 	}
+	public void ClearMoveHighlight()
+	{
+		int xPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
+		int yPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
+		int x;
+		int y;
+		for (int i = 3; i >= 0; i--) {
+			for (int j = 3; j >= 0; j--) {
+				bool xneg = (xPot + i) > (GameManager.instance.mapSizeX - 1);
+				bool yneg = (yPot + j) > (GameManager.instance.mapSizeY - 1);
+				x = xPot + i;
+				y = yPot + j;
+
+				if (xneg == true) {
+					x = xPot + 0;
+				}
+				if (yneg == true) {
+					y = yPot + 0;
+				}
+
+				GameManager.instance.map[x][y].transform.GetComponent<Renderer> ().material.color = Color.white;
+			}
+			for (int j = 0; j <= 3; j++) {
+				bool xneg = (xPot - i) < 0;
+				bool yneg = (yPot - j) < 0;
+				x = xPot - i;
+				y = yPot - j;
+
+				if (xneg == true) {
+					x = xPot + 0;
+				}
+				if (yneg == true) {
+					y = yPot + 0;
+				}
+
+				GameManager.instance.map[x][y].transform.GetComponent<Renderer> ().material.color = Color.white;
+			}
+		}
+		for (int i = 0; i <= 3; i++) {
+			for (int j = 3; j >= 0; j--) {
+				bool xneg = (xPot - i) < 0;
+				bool yneg = (yPot + j) > (GameManager.instance.mapSizeY - 1);
+				x = xPot - i;
+				y = yPot + j;
+
+				if (xneg == true) {
+					x = xPot + 0;
+				}
+				if (yneg == true) {
+					y = yPot + 0;
+				}
+
+				GameManager.instance.map[x][y].transform.GetComponent<Renderer> ().material.color = Color.white;
+			}
+			for (int j = 0; j <= 3; j++) {
+				bool xneg = (xPot + i) > (GameManager.instance.mapSizeX - 1);
+				bool yneg = (yPot - j) < 0;
+				x = xPot + i;
+				y = yPot - j;
+
+				if (xneg == true) {
+					x = xPot + 0;
+				}
+				if (yneg == true) {
+					y = yPot + 0;
+				}
+
+				GameManager.instance.map[x][y].transform.GetComponent<Renderer> ().material.color = Color.white;
+			}
+	}
+}
 }

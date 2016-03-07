@@ -37,6 +37,7 @@ public class UserPlayer : Player {
 			if (Vector3.Distance(moveDestination, transform.position) <= 0.1f) {
 				transform.position = moveDestination;
 				actionPoints--; //when the move is complete, the action point is removed
+				movingHighlight();
 			}
 		}
 		
