@@ -66,6 +66,9 @@ public class Tile : MonoBehaviour {
 	
 	void OnMouseDown() {
 		if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].moving) {
+			int x = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
+			int y = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
+			GameManager.instance.players [GameManager.instance.currentPlayerIndex].ClearMoveHighlight (x, y);
 			GameManager.instance.moveCurrentPlayer(this);
 		} else if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].attacking) {
 			GameManager.instance.attackWithCurrentPlayer(this);

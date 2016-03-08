@@ -191,10 +191,8 @@ public class Player : MonoBehaviour {
 				}
 			}
 	}
-	public void ClearMoveHighlight()
+	public void ClearMoveHighlight(int xPot, int yPot)
 	{
-		int xPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
-		int yPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
 		int x;
 		int y;
 		for (int i = 3; i >= 0; i--) {

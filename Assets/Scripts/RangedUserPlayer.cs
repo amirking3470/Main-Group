@@ -33,7 +33,6 @@ public class RangedUserPlayer : Player {
 	public override void TurnUpdate ()
 	{
 		if (Vector3.Distance(moveDestination, transform.position) > 0.1f) {
-			ClearMoveHighlight ();
 			transform.position += (moveDestination - transform.position).normalized * moveSpeed * Time.deltaTime;
 			//if the target destination is more than 1 tile, the player will move over time instead of warping to the point
 			if (Vector3.Distance(moveDestination, transform.position) <= 0.1f) {
