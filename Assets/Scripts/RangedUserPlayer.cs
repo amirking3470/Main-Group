@@ -30,10 +30,7 @@ public class RangedUserPlayer : Player {
 			transform.GetComponent<Renderer> ().material.color = Color.red; //When a player's hp gets to zero, the are changed to red and rotaed 90 degrees
 			transform.rotation = Quaternion.Euler (new Vector3 (90,0,0));
 		}
-<<<<<<< HEAD
-=======
-		//collisionCheck ();
->>>>>>> refs/remotes/origin/Patrique's-super-duper-AI
+
 	}
 
 	public override void TurnUpdate ()
@@ -212,11 +209,13 @@ public class RangedUserPlayer : Player {
 				attacking = false;
 				rangedHighlight ();
 				movingHighlight ();
+				collisionCheck ();
 			} else {
 				moving = false;
 				attacking = false;
 				rangedHighlight ();
 				movingHighlight ();
+				collisionCheck ();
 			}
 		}
 
@@ -228,10 +227,12 @@ public class RangedUserPlayer : Player {
 				moving = false;
 				attacking = true;
 				rangedHighlight ();
+				collisionCheck ();
 			} else {
 				moving = false;
 				attacking = false;
 				rangedHighlight ();
+				collisionCheck ();
 			}
 		}
 

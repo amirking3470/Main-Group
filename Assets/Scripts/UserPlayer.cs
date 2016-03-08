@@ -42,12 +42,7 @@ public class UserPlayer : Player {
 				transform.position = moveDestination;
 				actionPoints--; //when the move is complete, the action point is removed
 				movingHighlight();
-<<<<<<< HEAD
-				colDelete ();
 				collisionCheck ();
-=======
-				//collisionCheck ();
->>>>>>> refs/remotes/origin/Patrique's-super-duper-AI
 			}
 			if (actionPoints == 0) {
 				int x = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
@@ -74,17 +69,12 @@ public class UserPlayer : Player {
 				moving = true;
 				attacking = false;
 				movingHighlight ();
-				//collisionCheck ();
+				collisionCheck ();
 			} else {
 				moving = false;
 				attacking = false;
 				movingHighlight ();
-<<<<<<< HEAD
 				collisionCheck ();
-				colDelete ();
-=======
-				//collisionCheck ();
->>>>>>> refs/remotes/origin/Patrique's-super-duper-AI
 			}
 		}
 
@@ -96,24 +86,15 @@ public class UserPlayer : Player {
 				moving = false;
 				attacking = true;
 				movingHighlight ();
-<<<<<<< HEAD
 				collisionCheck ();
-				colDelete ();
-=======
 				MeleeHighlight ();
-				//collisionCheck ();
->>>>>>> refs/remotes/origin/Patrique's-super-duper-AI
+				collisionCheck ();
 			} else {
 				moving = false;
 				attacking = false;
 				movingHighlight ();
-<<<<<<< HEAD
 				collisionCheck ();
-				colDelete ();
-=======
 				MeleeHighlight ();
-				//collisionCheck ();
->>>>>>> refs/remotes/origin/Patrique's-super-duper-AI
 			}
 		}
 
@@ -124,7 +105,6 @@ public class UserPlayer : Player {
 			actionPoints = 2;
 			moving = false;
 			attacking = false;
-			colDelete ();
 			movingHighlight ();
 			MeleeHighlight ();
 			GameManager.instance.nextTurn();

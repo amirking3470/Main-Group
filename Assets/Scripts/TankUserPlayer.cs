@@ -29,10 +29,7 @@ public class TankUserPlayer : Player {
 			transform.GetComponent<Renderer> ().material.color = Color.red; //When a player's hp gets to zero, the are changed to red and rotaed 90 degrees
 			transform.rotation = Quaternion.Euler (new Vector3 (90,0,0));
 		}
-<<<<<<< HEAD
-=======
-		//collisionCheck ();
->>>>>>> refs/remotes/origin/Patrique's-super-duper-AI
+
 	}
 
 	public override void TurnUpdate ()
@@ -86,34 +83,14 @@ public class TankUserPlayer : Player {
 				moving = false;
 				attacking = true;
 				movingHighlight ();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 				collisionCheck ();
-				colDelete ();
-=======
 				MeleeHighlight ();
->>>>>>> refs/remotes/origin/Patrique's-super-duper-AI
-=======
->>>>>>> parent of 5ac93d7... adding extra shit
-=======
->>>>>>> parent of 5ac93d7... adding extra shit
 			} else {
 				moving = false;
 				attacking = false;
 				movingHighlight ();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 				collisionCheck ();
-				colDelete ();
-=======
 				MeleeHighlight ();
->>>>>>> refs/remotes/origin/Patrique's-super-duper-AI
-=======
->>>>>>> parent of 5ac93d7... adding extra shit
-=======
->>>>>>> parent of 5ac93d7... adding extra shit
 			}
 		}
 
