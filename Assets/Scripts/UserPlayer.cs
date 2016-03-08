@@ -85,11 +85,13 @@ public class UserPlayer : Player {
 				moving = false;
 				attacking = true;
 				movingHighlight ();
+				MeleeHighlight ();
 				//collisionCheck ();
 			} else {
 				moving = false;
 				attacking = false;
 				movingHighlight ();
+				MeleeHighlight ();
 				//collisionCheck ();
 			}
 		}
@@ -102,6 +104,7 @@ public class UserPlayer : Player {
 			moving = false;
 			attacking = false;
 			movingHighlight ();
+			MeleeHighlight ();
 			GameManager.instance.nextTurn();
 		}
 

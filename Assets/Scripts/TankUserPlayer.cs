@@ -81,10 +81,12 @@ public class TankUserPlayer : Player {
 				moving = false;
 				attacking = true;
 				movingHighlight ();
+				MeleeHighlight ();
 			} else {
 				moving = false;
 				attacking = false;
 				movingHighlight ();
+				MeleeHighlight ();
 			}
 		}
 
@@ -96,6 +98,7 @@ public class TankUserPlayer : Player {
 			moving = false;
 			attacking = false;
 			movingHighlight ();
+			MeleeHighlight ();
 			GameManager.instance.nextTurn();
 		}
 
