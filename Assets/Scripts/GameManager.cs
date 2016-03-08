@@ -125,15 +125,15 @@ public class GameManager : MonoBehaviour {
 			map.Add(row);
 		}
 
-		Badmap = new List<List<Tile>>();
-		List <Tile> badrow = new List<Tile>();
-		for (int x = 5; x < 10; x++) {
+		//Badmap = new List<List<Tile>>();
+		//List <Tile> badrow = new List<Tile>();
+		/*/for (int x = 5; x < 10; x++) {
 			Tile badtile = ((GameObject)Instantiate (TilePrefab, new Vector3 (x - Mathf.Floor (mapSizeX / 2), 1, -8 + Mathf.Floor (mapSizeY / 2)), Quaternion.Euler (new Vector3 ()))).GetComponent<Tile> ();
 			badtile.gridPosition = new Vector2 (x, 8);
-			badtile.badTile = true;
+			//badtile.badTile = true;
 			badtile.transform.GetComponent<Renderer> ().material.color = Color.black;
 			badrow.Add (badtile);
-		}
+		}/*/
 	}
 	
 	void generatePlayers() {

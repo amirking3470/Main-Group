@@ -120,7 +120,7 @@ public class Player : MonoBehaviour {
 						GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.cyan;
 					}
 				}
-			} else if (moving == false) {
+		} else if (moving == false && ranged == false) {
 				int xPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
 				int yPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
 				int x;

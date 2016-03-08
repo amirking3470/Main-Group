@@ -222,12 +222,10 @@ public class RangedUserPlayer : Player {
 				moving = false;
 				attacking = true;
 				rangedHighlight ();
-				movingHighlight ();
 			} else {
 				moving = false;
 				attacking = false;
 				rangedHighlight ();
-				movingHighlight ();
 			}
 		}
 
