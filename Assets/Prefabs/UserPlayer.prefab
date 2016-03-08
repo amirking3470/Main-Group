@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 140328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.075, y: 0.075, z: 0.075}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -49,8 +49,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -61,7 +63,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140328}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 51421d5c79e11fd48b20b036c81eec1f, type: 3}
 --- !u!114 &11497346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,16 +76,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0}
+  colCheckPrefab: {fileID: 189944, guid: 286498c5f3920344c8ad3ddba09d402c, type: 2}
   moveDestination: {x: 0, y: 0, z: 0}
   moveSpeed: 10
   moving: 0
   attacking: 0
+  ranged: 0
   HP: 25
   playerName: JohnMadden
-  attackChance: .75
-  defenseReduction: .150000006
+  attackChance: 0.75
+  defenseReduction: 0.15
   damageBase: 5
   damageRollSides: 6
+  user: 0
   actionPoints: 2
 --- !u!136 &13605738
 CapsuleCollider:
@@ -94,7 +99,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: .5
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -108,19 +113,31 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 4300000, guid: 51421d5c79e11fd48b20b036c81eec1f, type: 3}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.075
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.075
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: colCheckPrefab
+      value: 
+      objectReference: {fileID: 189944, guid: 286498c5f3920344c8ad3ddba09d402c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 140328}
