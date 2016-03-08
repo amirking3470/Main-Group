@@ -20,14 +20,17 @@ public class RangedUserPlayer : Player {
 	void Update () {
 		if (GameManager.instance.players [GameManager.instance.currentPlayerIndex] == this) {
 			transform.GetComponent<Renderer> ().material.color = Color.green; //Current player's turn will highlight them green
+		} else if (user == 1) {
+			transform.GetComponent<Renderer> ().material.color = Color.red;
 		} else {
-			transform.GetComponent<Renderer> ().material.color = Color.white;
+			transform.GetComponent<Renderer> ().material.color = Color.blue;
 		}
 
 		if (HP <= 0) {
 			transform.GetComponent<Renderer> ().material.color = Color.red; //When a player's hp gets to zero, the are changed to red and rotaed 90 degrees
 			transform.rotation = Quaternion.Euler (new Vector3 (90,0,0));
 		}
+		//collisionCheck ();
 	}
 
 	public override void TurnUpdate ()
@@ -38,6 +41,12 @@ public class RangedUserPlayer : Player {
 			if (Vector3.Distance(moveDestination, transform.position) <= 0.1f) {
 				transform.position = moveDestination;
 				actionPoints--; //when the move is complete, the action point is removed
+				movingHighlight();
+			}
+			if (actionPoints == 0) {
+				int x = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
+				int y = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
+				ClearMoveHighlight (x, y);
 			}
 		}
 
@@ -199,10 +208,12 @@ public class RangedUserPlayer : Player {
 				moving = true;
 				attacking = false;
 				rangedHighlight ();
+				movingHighlight ();
 			} else {
 				moving = false;
 				attacking = false;
 				rangedHighlight ();
+				movingHighlight ();
 			}
 		}
 
@@ -229,6 +240,7 @@ public class RangedUserPlayer : Player {
 			moving = false;
 			attacking = false;
 			rangedHighlight ();
+			movingHighlight ();
 			GameManager.instance.nextTurn();
 		}
 

@@ -19,24 +19,35 @@ public class UserPlayer : Player {
 	void Update () {
 		if (GameManager.instance.players [GameManager.instance.currentPlayerIndex] == this) {
 			transform.GetComponent<Renderer> ().material.color = Color.green; //Current player's turn will highlight them green
+		} else if (user == 1) {
+			transform.GetComponent<Renderer> ().material.color = Color.red;
 		} else {
-			transform.GetComponent<Renderer> ().material.color = Color.white;
+			transform.GetComponent<Renderer> ().material.color = Color.blue;
 		}
 
 		if (HP <= 0) {
 			transform.GetComponent<Renderer> ().material.color = Color.red; //When a player's hp gets to zero, the are changed to red and rotaed 90 degrees
 			transform.rotation = Quaternion.Euler (new Vector3 (90,0,0));
 		}
+
 	}
 	
 	public override void TurnUpdate ()
 	{
+		
 		if (Vector3.Distance(moveDestination, transform.position) > 0.1f) {
 			transform.position += (moveDestination - transform.position).normalized * moveSpeed * Time.deltaTime;
 			//if the target destination is more than 1 tile, the player will move over time instead of warping to the point
 			if (Vector3.Distance(moveDestination, transform.position) <= 0.1f) {
 				transform.position = moveDestination;
 				actionPoints--; //when the move is complete, the action point is removed
+				movingHighlight();
+				//collisionCheck ();
+			}
+			if (actionPoints == 0) {
+				int x = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
+				int y = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
+				ClearMoveHighlight (x, y);
 			}
 		}
 		
@@ -58,9 +69,13 @@ public class UserPlayer : Player {
 			if (!moving) {
 				moving = true;
 				attacking = false;
+				movingHighlight ();
+				//collisionCheck ();
 			} else {
 				moving = false;
 				attacking = false;
+				movingHighlight ();
+				//collisionCheck ();
 			}
 		}
 
@@ -71,9 +86,15 @@ public class UserPlayer : Player {
 			if (!attacking) {
 				moving = false;
 				attacking = true;
+				movingHighlight ();
+				MeleeHighlight ();
+				//collisionCheck ();
 			} else {
 				moving = false;
 				attacking = false;
+				movingHighlight ();
+				MeleeHighlight ();
+				//collisionCheck ();
 			}
 		}
 
@@ -84,6 +105,8 @@ public class UserPlayer : Player {
 			actionPoints = 2;
 			moving = false;
 			attacking = false;
+			movingHighlight ();
+			MeleeHighlight ();
 			GameManager.instance.nextTurn();
 		}
 

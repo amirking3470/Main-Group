@@ -18,8 +18,8 @@ public class Tile : MonoBehaviour {
 	}
 	
 	void OnMouseEnter() {
-		//Highlighting a selected tile based on the current button selection
 		if (badTile != true) {
+			//Highlighting a selected tile based on the current button selection
 			if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].moving) {
 				transform.GetComponent<Renderer> ().material.color = Color.blue;
 			} else if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].attacking) {
@@ -31,17 +31,22 @@ public class Tile : MonoBehaviour {
 	
 	void OnMouseExit() {
 		if (badTile != true) {
-			if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].attacking == true) {
-				if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].ranged == true) {
-					if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x >= this.gridPosition.x - 3 &&
-					   GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x <= this.gridPosition.x + 3 &&
-					   GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y >= this.gridPosition.y - 3 &&
-					   GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y <= this.gridPosition.y + 3) {
-						transform.GetComponent<Renderer> ().material.color = Color.magenta; 
-					} else {
-						transform.GetComponent<Renderer> ().material.color = Color.white; 
-						//changing the color of the tile back to the default white, will have to be changed when we add textures to tiles
-					}
+			if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].attacking == true && GameManager.instance.players [GameManager.instance.currentPlayerIndex].ranged == true) {
+				if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x >= this.gridPosition.x - 3 &&
+				   GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x <= this.gridPosition.x + 3 &&
+				   GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y >= this.gridPosition.y - 3 &&
+				   GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y <= this.gridPosition.y + 3) {
+					transform.GetComponent<Renderer> ().material.color = Color.magenta; 
+				} else {
+					transform.GetComponent<Renderer> ().material.color = Color.white; 
+					//changing the color of the tile back to the default white, will have to be changed when we add textures to tiles
+				}
+			} else if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].moving == true) {
+				if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x >= this.gridPosition.x - 3 &&
+				   GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x <= this.gridPosition.x + 3 &&
+				   GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y >= this.gridPosition.y - 3 &&
+				   GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y <= this.gridPosition.y + 3) {
+					transform.GetComponent<Renderer> ().material.color = Color.cyan; 
 				} else {
 					transform.GetComponent<Renderer> ().material.color = Color.white; 
 					//changing the color of the tile back to the default white, will have to be changed when we add textures to tiles
@@ -50,6 +55,17 @@ public class Tile : MonoBehaviour {
 				transform.GetComponent<Renderer> ().material.color = Color.white; 
 				//changing the color of the tile back to the default white, will have to be changed when we add textures to tiles
 			}
+			if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].attacking == true && GameManager.instance.players [GameManager.instance.currentPlayerIndex].ranged == false) {
+				if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x >= this.gridPosition.x - 1 &&
+					GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x <= this.gridPosition.x + 1 &&
+					GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y >= this.gridPosition.y - 1 &&
+					GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y <= this.gridPosition.y + 1) {
+					transform.GetComponent<Renderer> ().material.color = Color.magenta; 
+				} else {
+					transform.GetComponent<Renderer> ().material.color = Color.white; 
+					//changing the color of the tile back to the default white, will have to be changed when we add textures to tiles
+				}
+			}
 		}
 	}
 	
@@ -57,12 +73,15 @@ public class Tile : MonoBehaviour {
 	void OnMouseDown() {
 		if (badTile != true) {
 			if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].moving) {
+				int x = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
+				int y = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
+				GameManager.instance.players [GameManager.instance.currentPlayerIndex].ClearMoveHighlight (x, y);
 				GameManager.instance.moveCurrentPlayer (this);
 			} else if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].attacking) {
 				GameManager.instance.attackWithCurrentPlayer (this);
 			}
+			//when clicking the tile based on what is currently selected it will either call the moving function or the attacking function in GameManager
 		}
-		//when clicking the tile based on what is currently selected it will either call the moving function or the attacking function in GameManager
 	}
 	
 }
