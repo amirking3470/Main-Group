@@ -55,6 +55,17 @@ public class Tile : MonoBehaviour {
 				transform.GetComponent<Renderer> ().material.color = Color.white; 
 				//changing the color of the tile back to the default white, will have to be changed when we add textures to tiles
 			}
+			if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].attacking == true && GameManager.instance.players [GameManager.instance.currentPlayerIndex].ranged == false) {
+				if (GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x >= this.gridPosition.x - 1 &&
+					GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x <= this.gridPosition.x + 1 &&
+					GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y >= this.gridPosition.y - 1 &&
+					GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y <= this.gridPosition.y + 1) {
+					transform.GetComponent<Renderer> ().material.color = Color.magenta; 
+				} else {
+					transform.GetComponent<Renderer> ().material.color = Color.white; 
+					//changing the color of the tile back to the default white, will have to be changed when we add textures to tiles
+				}
+			}
 		}
 	}
 	

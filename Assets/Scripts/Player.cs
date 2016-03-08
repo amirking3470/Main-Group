@@ -22,13 +22,14 @@ public class Player : MonoBehaviour {
 	public float defenseReduction = 0.15f;
 	public int damageBase = 5;
 	public float damageRollSides = 6; //d6
+	public int user = 0; // player 1 & player 2
 	//Default base stats for all units, should be able to change in the extension of this file, if the unit will have different stats
 
+	public static Player instance;
 
 	public int actionPoints = 2;
 	
 	void Awake () {
-
 	}
 	
 	// Use this for initialization
@@ -56,7 +57,7 @@ public class Player : MonoBehaviour {
 
 	}
 
-	public void collisionCheck () {
+	/*public void collisionCheck () {
 		if (moving == true) {
 			int xPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
 			int yPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
@@ -132,7 +133,7 @@ public class Player : MonoBehaviour {
 				}
 			}
 		}
-	}
+	}*/
 
 	public void colDelete () {
 		GameObject[] objects = GameObject.FindGameObjectsWithTag ("colChecker");
@@ -347,4 +348,141 @@ public class Player : MonoBehaviour {
 			}
 	}
 }
+	public void MeleeHighlight() {
+		if (attacking == true) {
+			int xPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
+			int yPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
+			int x;
+			int y;
+			for (int i = 1; i >= 0; i--) {
+				for (int j = 1; j >= 0; j--) {
+					bool xneg = (xPot + i) > (GameManager.instance.mapSizeX - 1);
+					bool yneg = (yPot + j) > (GameManager.instance.mapSizeY - 1);
+					x = xPot + i;
+					y = yPot + j;
+
+					if (xneg == true) {
+						x = xPot + 0;
+					}
+					if (yneg == true) {
+						y = yPot + 0;
+					}
+					GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.magenta;
+				}
+				for (int j = 0; j <= 1; j++) {
+					bool xneg = (xPot - i) < 0;
+					bool yneg = (yPot - j) < 0;
+					x = xPot - i;
+					y = yPot - j;
+
+					if (xneg == true) {
+						x = xPot + 0;
+					}
+					if (yneg == true) {
+						y = yPot + 0;
+					}
+					GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.magenta;
+				}
+			}
+			for (int i = 0; i <= 1; i++) {
+				for (int j = 1; j >= 0; j--) {
+					bool xneg = (xPot - i) < 0;
+					bool yneg = (yPot + j) > (GameManager.instance.mapSizeY - 1);
+					x = xPot - i;
+					y = yPot + j;
+
+					if (xneg == true) {
+						x = xPot + 0;
+					}
+					if (yneg == true) {
+						y = yPot + 0;
+					}
+					GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.magenta;
+				}
+				for (int j = 0; j <= 1; j++) {
+					bool xneg = (xPot + i) > (GameManager.instance.mapSizeX - 1);
+					bool yneg = (yPot - j) < 0;
+					x = xPot + i;
+					y = yPot - j;
+
+					if (xneg == true) {
+						x = xPot + 0;
+					}
+					if (yneg == true) {
+						y = yPot + 0;
+					}
+					GameManager.instance.map [x] [y].transform.GetComponent<Renderer> ().material.color = Color.magenta;
+				}
+			}
+		} else if (attacking == false) {
+			int xPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
+			int yPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
+			int x;
+			int y;
+			for (int i = 1; i >= 0; i--) {
+				for (int j = 1; j >= 0; j--) {
+					bool xneg = (xPot + i) > (GameManager.instance.mapSizeX - 1);
+					bool yneg = (yPot + j) > (GameManager.instance.mapSizeY - 1);
+					x = xPot + i;
+					y = yPot + j;
+
+					if (xneg == true) {
+						x = xPot + 0;
+					}
+					if (yneg == true) {
+						y = yPot + 0;
+					}
+
+					GameManager.instance.map[x][y].transform.GetComponent<Renderer> ().material.color = Color.white;
+				}
+				for (int j = 0; j <= 1; j++) {
+					bool xneg = (xPot - i) < 0;
+					bool yneg = (yPot - j) < 0;
+					x = xPot - i;
+					y = yPot - j;
+
+					if (xneg == true) {
+						x = xPot + 0;
+					}
+					if (yneg == true) {
+						y = yPot + 0;
+					}
+
+					GameManager.instance.map[x][y].transform.GetComponent<Renderer> ().material.color = Color.white;
+				}
+			}
+			for (int i = 0; i <= 1; i++) {
+				for (int j = 1; j >= 0; j--) {
+					bool xneg = (xPot - i) < 0;
+					bool yneg = (yPot + j) > (GameManager.instance.mapSizeY - 1);
+					x = xPot - i;
+					y = yPot + j;
+
+					if (xneg == true) {
+						x = xPot + 0;
+					}
+					if (yneg == true) {
+						y = yPot + 0;
+					}
+
+					GameManager.instance.map[x][y].transform.GetComponent<Renderer> ().material.color = Color.white;
+				}
+				for (int j = 0; j <= 1; j++) {
+					bool xneg = (xPot + i) > (GameManager.instance.mapSizeX - 1);
+					bool yneg = (yPot - j) < 0;
+					x = xPot + i;
+					y = yPot - j;
+
+					if (xneg == true) {
+						x = xPot + 0;
+					}
+					if (yneg == true) {
+						y = yPot + 0;
+					}
+
+					GameManager.instance.map[x][y].transform.GetComponent<Renderer> ().material.color = Color.white;
+				}
+			}
+		}
+	}
 }
