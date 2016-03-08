@@ -88,11 +88,14 @@ public class TankUserPlayer : Player {
 				movingHighlight ();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				collisionCheck ();
 				colDelete ();
 =======
 				MeleeHighlight ();
 >>>>>>> refs/remotes/origin/Patrique's-super-duper-AI
+=======
+>>>>>>> parent of 5ac93d7... adding extra shit
 =======
 >>>>>>> parent of 5ac93d7... adding extra shit
 			} else {
@@ -101,11 +104,14 @@ public class TankUserPlayer : Player {
 				movingHighlight ();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				collisionCheck ();
 				colDelete ();
 =======
 				MeleeHighlight ();
 >>>>>>> refs/remotes/origin/Patrique's-super-duper-AI
+=======
+>>>>>>> parent of 5ac93d7... adding extra shit
 =======
 >>>>>>> parent of 5ac93d7... adding extra shit
 			}
