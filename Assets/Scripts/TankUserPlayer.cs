@@ -19,14 +19,17 @@ public class TankUserPlayer : Player {
 	void Update () {
 		if (GameManager.instance.players [GameManager.instance.currentPlayerIndex] == this) {
 			transform.GetComponent<Renderer> ().material.color = Color.green; //Current player's turn will highlight them green
+		} else if (user == 1) {
+			transform.GetComponent<Renderer> ().material.color = Color.red;
 		} else {
-			transform.GetComponent<Renderer> ().material.color = Color.white;
+			transform.GetComponent<Renderer> ().material.color = Color.blue;
 		}
 
 		if (HP <= 0) {
 			transform.GetComponent<Renderer> ().material.color = Color.red; //When a player's hp gets to zero, the are changed to red and rotaed 90 degrees
 			transform.rotation = Quaternion.Euler (new Vector3 (90,0,0));
 		}
+
 	}
 
 	public override void TurnUpdate ()
@@ -37,6 +40,12 @@ public class TankUserPlayer : Player {
 			if (Vector3.Distance(moveDestination, transform.position) <= 0.1f) {
 				transform.position = moveDestination;
 				actionPoints--; //when the move is complete, the action point is removed
+				movingHighlight();
+			}
+			if (actionPoints == 0) {
+				int x = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
+				int y = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
+				ClearMoveHighlight (x, y);
 			}
 		}
 
@@ -58,9 +67,11 @@ public class TankUserPlayer : Player {
 			if (!moving) {
 				moving = true;
 				attacking = false;
+				movingHighlight ();
 			} else {
 				moving = false;
 				attacking = false;
+				movingHighlight ();
 			}
 		}
 
@@ -71,9 +82,15 @@ public class TankUserPlayer : Player {
 			if (!attacking) {
 				moving = false;
 				attacking = true;
+				movingHighlight ();
+				collisionCheck ();
+				MeleeHighlight ();
 			} else {
 				moving = false;
 				attacking = false;
+				movingHighlight ();
+				collisionCheck ();
+				MeleeHighlight ();
 			}
 		}
 
@@ -81,9 +98,11 @@ public class TankUserPlayer : Player {
 		buttonRect = new Rect (0, Screen.height - buttonHeight * 1, buttonWidth, buttonHeight);
 
 		if (GUI.Button (buttonRect, "End Turn")) {
-			actionPoints = 2;
+			actionPoints = 3;
 			moving = false;
 			attacking = false;
+			movingHighlight ();
+			MeleeHighlight ();
 			GameManager.instance.nextTurn();
 		}
 
