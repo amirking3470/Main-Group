@@ -37,6 +37,12 @@ public class TankUserPlayer : Player {
 			if (Vector3.Distance(moveDestination, transform.position) <= 0.1f) {
 				transform.position = moveDestination;
 				actionPoints--; //when the move is complete, the action point is removed
+				movingHighlight();
+			}
+			if (actionPoints == 0) {
+				int x = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
+				int y = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
+				ClearMoveHighlight (x, y);
 			}
 		}
 

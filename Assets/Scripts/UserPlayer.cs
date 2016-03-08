@@ -31,6 +31,7 @@ public class UserPlayer : Player {
 	
 	public override void TurnUpdate ()
 	{
+		
 		if (Vector3.Distance(moveDestination, transform.position) > 0.1f) {
 			transform.position += (moveDestination - transform.position).normalized * moveSpeed * Time.deltaTime;
 			//if the target destination is more than 1 tile, the player will move over time instead of warping to the point
@@ -38,6 +39,11 @@ public class UserPlayer : Player {
 				transform.position = moveDestination;
 				actionPoints--; //when the move is complete, the action point is removed
 				movingHighlight();
+			}
+			if (actionPoints == 0) {
+				int x = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
+				int y = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
+				ClearMoveHighlight (x, y);
 			}
 		}
 		
