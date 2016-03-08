@@ -45,8 +45,6 @@ public class RangedUserPlayer : Player {
 				transform.position = moveDestination;
 				actionPoints--; //when the move is complete, the action point is removed
 				movingHighlight();
-				colDelete ();
-				collisionCheck ();
 			}
 			if (actionPoints == 0) {
 				int x = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
@@ -214,14 +212,11 @@ public class RangedUserPlayer : Player {
 				attacking = false;
 				rangedHighlight ();
 				movingHighlight ();
-				collisionCheck ();
 			} else {
 				moving = false;
 				attacking = false;
 				rangedHighlight ();
 				movingHighlight ();
-				collisionCheck ();
-				colDelete ();
 			}
 		}
 
@@ -233,14 +228,10 @@ public class RangedUserPlayer : Player {
 				moving = false;
 				attacking = true;
 				rangedHighlight ();
-				collisionCheck ();
-				colDelete ();
 			} else {
 				moving = false;
 				attacking = false;
 				rangedHighlight ();
-				collisionCheck ();
-				colDelete ();
 			}
 		}
 
@@ -251,7 +242,6 @@ public class RangedUserPlayer : Player {
 			actionPoints = 3;
 			moving = false;
 			attacking = false;
-			colDelete ();
 			rangedHighlight ();
 			movingHighlight ();
 			GameManager.instance.nextTurn();

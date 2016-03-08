@@ -44,8 +44,6 @@ public class TankUserPlayer : Player {
 				transform.position = moveDestination;
 				actionPoints--; //when the move is complete, the action point is removed
 				movingHighlight();
-				colDelete ();
-				collisionCheck ();
 			}
 			if (actionPoints == 0) {
 				int x = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
@@ -73,14 +71,10 @@ public class TankUserPlayer : Player {
 				moving = true;
 				attacking = false;
 				movingHighlight ();
-				collisionCheck ();
-				colDelete ();
 			} else {
 				moving = false;
 				attacking = false;
 				movingHighlight ();
-				collisionCheck ();
-				colDelete ();
 			}
 		}
 
@@ -93,21 +87,27 @@ public class TankUserPlayer : Player {
 				attacking = true;
 				movingHighlight ();
 <<<<<<< HEAD
-				collisionCheck ();
-				colDelete ();
-=======
-				MeleeHighlight ();
->>>>>>> refs/remotes/origin/Patrique's-super-duper-AI
-			} else {
-				moving = false;
-				attacking = false;
-				movingHighlight ();
 <<<<<<< HEAD
 				collisionCheck ();
 				colDelete ();
 =======
 				MeleeHighlight ();
 >>>>>>> refs/remotes/origin/Patrique's-super-duper-AI
+=======
+>>>>>>> parent of 5ac93d7... adding extra shit
+			} else {
+				moving = false;
+				attacking = false;
+				movingHighlight ();
+<<<<<<< HEAD
+<<<<<<< HEAD
+				collisionCheck ();
+				colDelete ();
+=======
+				MeleeHighlight ();
+>>>>>>> refs/remotes/origin/Patrique's-super-duper-AI
+=======
+>>>>>>> parent of 5ac93d7... adding extra shit
 			}
 		}
 
@@ -118,7 +118,6 @@ public class TankUserPlayer : Player {
 			actionPoints = 3;
 			moving = false;
 			attacking = false;
-			colDelete ();
 			movingHighlight ();
 			MeleeHighlight ();
 			GameManager.instance.nextTurn();
