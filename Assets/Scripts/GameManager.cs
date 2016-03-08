@@ -51,8 +51,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void moveCurrentPlayer(Tile destTile) {
+		if (players [currentPlayerIndex].gridPosition.x >= destTile.gridPosition.x - 3 && players [currentPlayerIndex].gridPosition.x <= destTile.gridPosition.x + 3 &&
+			players [currentPlayerIndex].gridPosition.y >= destTile.gridPosition.y - 3 && players [currentPlayerIndex].gridPosition.y <= destTile.gridPosition.y + 3){
 		players [currentPlayerIndex].gridPosition = destTile.gridPosition; //Updating the current player's position as they move
 		players [currentPlayerIndex].moveDestination = destTile.transform.position + 1.5f * Vector3.up; //moves the current player the the selected tile
+		}
+		players [currentPlayerIndex].movingHighlight ();
 	}
 
 

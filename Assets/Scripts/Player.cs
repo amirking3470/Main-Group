@@ -28,7 +28,6 @@ public class Player : MonoBehaviour {
 	public int actionPoints = 2;
 	
 	void Awake () {
-
 	}
 	
 	// Use this for initialization
