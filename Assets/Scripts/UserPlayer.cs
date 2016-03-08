@@ -40,6 +40,7 @@ public class UserPlayer : Player {
 				transform.position = moveDestination;
 				actionPoints--; //when the move is complete, the action point is removed
 				movingHighlight();
+				colDelete ();
 				collisionCheck ();
 			}
 			if (actionPoints == 0) {
@@ -48,7 +49,6 @@ public class UserPlayer : Player {
 				ClearMoveHighlight (x, y);
 			}
 		}
-		
 		base.TurnUpdate ();
 	}
 
@@ -74,6 +74,7 @@ public class UserPlayer : Player {
 				attacking = false;
 				movingHighlight ();
 				collisionCheck ();
+				colDelete ();
 			}
 		}
 
@@ -86,11 +87,13 @@ public class UserPlayer : Player {
 				attacking = true;
 				movingHighlight ();
 				collisionCheck ();
+				colDelete ();
 			} else {
 				moving = false;
 				attacking = false;
 				movingHighlight ();
 				collisionCheck ();
+				colDelete ();
 			}
 		}
 
@@ -101,6 +104,7 @@ public class UserPlayer : Player {
 			actionPoints = 2;
 			moving = false;
 			attacking = false;
+			colDelete ();
 			movingHighlight ();
 			GameManager.instance.nextTurn();
 		}
