@@ -840,7 +840,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MAIN MENU
+  m_Text: BACK TO MAIN MENU
 --- !u!222 &1411696961
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1267,7 +1267,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'OPTION '
+  m_Text: 'OPTIONS '
 --- !u!222 &2084823925
 CanvasRenderer:
   m_ObjectHideFlags: 0

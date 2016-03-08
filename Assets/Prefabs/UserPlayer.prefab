@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 140328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.075, y: 0.075, z: 0.075}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -63,7 +63,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140328}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 51421d5c79e11fd48b20b036c81eec1f, type: 3}
 --- !u!114 &11497346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,6 +88,7 @@ MonoBehaviour:
   defenseReduction: 0.15
   damageBase: 5
   damageRollSides: 6
+  user: 0
   actionPoints: 2
 --- !u!136 &13605738
 CapsuleCollider:
@@ -112,18 +113,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+      objectReference: {fileID: 4300000, guid: 51421d5c79e11fd48b20b036c81eec1f, type: 3}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.075
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.075
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.075
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
