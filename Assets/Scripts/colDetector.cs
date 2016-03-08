@@ -18,7 +18,7 @@ public class colDetector : MonoBehaviour {
 	void OnTriggerEnter (Collider col) {
 		if (col.gameObject.tag == "badTile") {
 			//Debug.Log ("collision at " + gridPosition);
-			Debug.Log ("col grid pos " + colGridPosition);
+			//Debug.Log ("col grid pos " + colGridPosition);
 			dontDelete = true;
 			collide = true;
 		}
