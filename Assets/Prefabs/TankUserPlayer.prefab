@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPosition: {x: 0, y: 0}
+  colCheckPrefab: {fileID: 103042, guid: 286498c5f3920344c8ad3ddba09d402c, type: 2}
   moveDestination: {x: 0, y: 0, z: 0}
   moveSpeed: 10
   moving: 0
@@ -107,7 +108,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: colCheckPrefab
+      value: 
+      objectReference: {fileID: 103042, guid: 286498c5f3920344c8ad3ddba09d402c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 166144}

@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour {
 	
 	public GameObject TilePrefab; //Main prefab for the tile
 	public GameObject UserPlayerPrefab; //Main PLayer prefab for player controlled units, will be divided as we add more units
-	public GameObject AIPlayerPrefab; //Main player prefab for the AI
 	public GameObject RangedUserPlayerPrefab; //ranged prefab
 	public GameObject TankUserPlayerPrefab; //tank prefab
 	
@@ -131,6 +130,7 @@ public class GameManager : MonoBehaviour {
 			Tile badtile = ((GameObject)Instantiate (TilePrefab, new Vector3 (x - Mathf.Floor (mapSizeX / 2), 1, -8 + Mathf.Floor (mapSizeY / 2)), Quaternion.Euler (new Vector3 ()))).GetComponent<Tile> ();
 			badtile.gridPosition = new Vector2 (x, 8);
 			badtile.badTile = true;
+			badtile.gameObject.tag = "badTile";
 			badtile.transform.GetComponent<Renderer> ().material.color = Color.black;
 			badrow.Add (badtile);
 		}

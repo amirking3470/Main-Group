@@ -27,6 +27,7 @@ public class TankUserPlayer : Player {
 			transform.GetComponent<Renderer> ().material.color = Color.red; //When a player's hp gets to zero, the are changed to red and rotaed 90 degrees
 			transform.rotation = Quaternion.Euler (new Vector3 (90,0,0));
 		}
+		collisionCheck ();
 	}
 
 	public override void TurnUpdate ()
@@ -37,6 +38,12 @@ public class TankUserPlayer : Player {
 			if (Vector3.Distance(moveDestination, transform.position) <= 0.1f) {
 				transform.position = moveDestination;
 				actionPoints--; //when the move is complete, the action point is removed
+				movingHighlight();
+			}
+			if (actionPoints == 0) {
+				int x = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
+				int y = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
+				ClearMoveHighlight (x, y);
 			}
 		}
 
@@ -58,9 +65,11 @@ public class TankUserPlayer : Player {
 			if (!moving) {
 				moving = true;
 				attacking = false;
+				movingHighlight ();
 			} else {
 				moving = false;
 				attacking = false;
+				movingHighlight ();
 			}
 		}
 
@@ -71,9 +80,11 @@ public class TankUserPlayer : Player {
 			if (!attacking) {
 				moving = false;
 				attacking = true;
+				movingHighlight ();
 			} else {
 				moving = false;
 				attacking = false;
+				movingHighlight ();
 			}
 		}
 
@@ -84,6 +95,7 @@ public class TankUserPlayer : Player {
 			actionPoints = 3;
 			moving = false;
 			attacking = false;
+			movingHighlight ();
 			GameManager.instance.nextTurn();
 		}
 
