@@ -55,7 +55,7 @@ public class Player : MonoBehaviour {
 
 	}
 
-	public void collisionCheck () {
+	/*public void collisionCheck () {
 		if (moving == true) {
 			int xPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
 			int yPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
@@ -122,7 +122,7 @@ public class Player : MonoBehaviour {
 				}
 			}
 		}
-	}
+	}*/
 
 	public void movingHighlight()
 	{
