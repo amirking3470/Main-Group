@@ -27,6 +27,7 @@ public class UserPlayer : Player {
 			transform.GetComponent<Renderer> ().material.color = Color.red; //When a player's hp gets to zero, the are changed to red and rotaed 90 degrees
 			transform.rotation = Quaternion.Euler (new Vector3 (90,0,0));
 		}
+
 	}
 	
 	public override void TurnUpdate ()
@@ -39,6 +40,7 @@ public class UserPlayer : Player {
 				transform.position = moveDestination;
 				actionPoints--; //when the move is complete, the action point is removed
 				movingHighlight();
+				collisionCheck ();
 			}
 			if (actionPoints == 0) {
 				int x = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
@@ -66,10 +68,12 @@ public class UserPlayer : Player {
 				moving = true;
 				attacking = false;
 				movingHighlight ();
+				collisionCheck ();
 			} else {
 				moving = false;
 				attacking = false;
 				movingHighlight ();
+				collisionCheck ();
 			}
 		}
 
@@ -81,10 +85,12 @@ public class UserPlayer : Player {
 				moving = false;
 				attacking = true;
 				movingHighlight ();
+				collisionCheck ();
 			} else {
 				moving = false;
 				attacking = false;
 				movingHighlight ();
+				collisionCheck ();
 			}
 		}
 
