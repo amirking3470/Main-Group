@@ -19,8 +19,10 @@ public class UserPlayer : Player {
 	void Update () {
 		if (GameManager.instance.players [GameManager.instance.currentPlayerIndex] == this) {
 			transform.GetComponent<Renderer> ().material.color = Color.green; //Current player's turn will highlight them green
+		} else if (user == 1) {
+			transform.GetComponent<Renderer> ().material.color = Color.red;
 		} else {
-			transform.GetComponent<Renderer> ().material.color = Color.white;
+			transform.GetComponent<Renderer> ().material.color = Color.blue;
 		}
 
 		if (HP <= 0) {

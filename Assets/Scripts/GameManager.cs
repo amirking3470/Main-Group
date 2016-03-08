@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour {
 	public GameObject UserPlayerPrefab; //Main PLayer prefab for player controlled units, will be divided as we add more units
 	public GameObject RangedUserPlayerPrefab; //ranged prefab
 	public GameObject TankUserPlayerPrefab; //tank prefab
-	
+
+
 	public int mapSizeX = 11;
 	public int mapSizeY = 11;//Default map size, standard generates an 12/12 grid, but can be made bigger on the game manager object in editor
 	//* We need to find out a way to be able to generate custom grid sizes! Ie: 15/10 //*
@@ -141,35 +142,40 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void generatePlayers() {
-		UserPlayer player;
 		//Adding players, using prefabs with relevant code attached
-		
-		player = ((GameObject)Instantiate(UserPlayerPrefab, new Vector3((mapSizeX-1) - Mathf.Floor(mapSizeX/2),1.5f, -(mapSizeY-1) + Mathf.Floor(mapSizeY/2)), Quaternion.Euler(new Vector3()))).GetComponent<UserPlayer>();
-		player.gridPosition = new Vector2 ((mapSizeX - 1), (mapSizeY - 1));
-		player.playerName = "Hank";
-		player.moveDestination = new Vector3((mapSizeX-1) - Mathf.Floor(mapSizeX/2),1.5f, -(mapSizeY-1) + Mathf.Floor(mapSizeY/2));
-		players.Add(player);
-				
-		TankUserPlayer tankplayer = ((GameObject)Instantiate(TankUserPlayerPrefab, new Vector3(0 - Mathf.Floor(mapSizeX/2),1.5f, -10 + Mathf.Floor(mapSizeY/2)), Quaternion.Euler(new Vector3()))).GetComponent<TankUserPlayer>();
-		tankplayer.gridPosition = new Vector2 (0, 10);
-		tankplayer.moveDestination = new Vector3 (0 - Mathf.Floor (mapSizeX / 2), 1.5f, -10 + Mathf.Floor (mapSizeY / 2));
-		tankplayer.playerName = "Tim";
-		tankplayer.HP = 35;
-		tankplayer.attackChance = 0.75f;
-		tankplayer.defenseReduction = 0.30f;
-		tankplayer.damageRollSides = 4;
-		tankplayer.actionPoints = 3;
-		players.Add(tankplayer);
+		for (int u = 1; u < 3; u++) {
+			UserPlayer player = ((GameObject)Instantiate (UserPlayerPrefab, new Vector3 ((mapSizeX - 1) - Mathf.Floor (mapSizeX / 2), 1.5f, -(mapSizeY - 1) + Mathf.Floor (mapSizeY / 2)), Quaternion.Euler (new Vector3 ()))).GetComponent<UserPlayer> ();
+			player.gridPosition = new Vector2 ((mapSizeX - 1), (mapSizeY - 1));
+			player.playerName = "Hank";
+			player.moveDestination = new Vector3 ((mapSizeX - 1) - Mathf.Floor (mapSizeX / 2), 1.5f, -(mapSizeY - 1) + Mathf.Floor (mapSizeY / 2));
+			player.user = u;
+			players.Add (player);
 
-		RangedUserPlayer rangedplayer = ((GameObject)Instantiate(RangedUserPlayerPrefab, new Vector3(5 - Mathf.Floor(mapSizeX/2),1.5f, -5 + Mathf.Floor(mapSizeY/2)), Quaternion.Euler(new Vector3()))).GetComponent<RangedUserPlayer>();
-		rangedplayer.gridPosition = new Vector2 (5, 5);
-		rangedplayer.ranged = true;
-		rangedplayer.playerName = "Bob";
-		rangedplayer.moveDestination = new Vector3 (5 - Mathf.Floor (mapSizeX / 2), 1.5f, -5 + Mathf.Floor (mapSizeY / 2));
-		rangedplayer.HP = 15;
-		rangedplayer.attackChance = 0.95f;
-		rangedplayer.defenseReduction = 0.20f;
-		rangedplayer.damageRollSides = 10;
-		players.Add(rangedplayer);
+
+				
+			TankUserPlayer tankplayer = ((GameObject)Instantiate (TankUserPlayerPrefab, new Vector3 (0 - Mathf.Floor (mapSizeX / 2), 1.5f, -10 + Mathf.Floor (mapSizeY / 2)), Quaternion.Euler (new Vector3 ()))).GetComponent<TankUserPlayer> ();
+			tankplayer.gridPosition = new Vector2 (0, 10);
+			tankplayer.moveDestination = new Vector3 (0 - Mathf.Floor (mapSizeX / 2), 1.5f, -10 + Mathf.Floor (mapSizeY / 2));
+			tankplayer.playerName = "Tim";
+			tankplayer.HP = 35;
+			tankplayer.attackChance = 0.75f;
+			tankplayer.defenseReduction = 0.30f;
+			tankplayer.damageRollSides = 4;
+			tankplayer.actionPoints = 3;
+			tankplayer.user = u;
+			players.Add (tankplayer);
+
+			RangedUserPlayer rangedplayer = ((GameObject)Instantiate (RangedUserPlayerPrefab, new Vector3 (5 - Mathf.Floor (mapSizeX / 2), 1.5f, -5 + Mathf.Floor (mapSizeY / 2)), Quaternion.Euler (new Vector3 ()))).GetComponent<RangedUserPlayer> ();
+			rangedplayer.gridPosition = new Vector2 (5, 5);
+			rangedplayer.ranged = true;
+			rangedplayer.playerName = "Bob";
+			rangedplayer.moveDestination = new Vector3 (5 - Mathf.Floor (mapSizeX / 2), 1.5f, -5 + Mathf.Floor (mapSizeY / 2));
+			rangedplayer.HP = 15;
+			rangedplayer.attackChance = 0.95f;
+			rangedplayer.defenseReduction = 0.20f;
+			rangedplayer.damageRollSides = 10;
+			rangedplayer.user = u;
+			players.Add (rangedplayer);
+		}
 	}
 }

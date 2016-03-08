@@ -22,8 +22,10 @@ public class Player : MonoBehaviour {
 	public float defenseReduction = 0.15f;
 	public int damageBase = 5;
 	public float damageRollSides = 6; //d6
+	public int user = 0; // player 1 & player 2
 	//Default base stats for all units, should be able to change in the extension of this file, if the unit will have different stats
 
+	public static Player instance;
 
 	public int actionPoints = 2;
 	
