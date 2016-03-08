@@ -56,7 +56,7 @@ public class Player : MonoBehaviour {
 
 	}
 
-	/*public void collisionCheck () {
+	public void collisionCheck () {
 		if (moving == true) {
 			int xPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
 			int yPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
@@ -75,7 +75,10 @@ public class Player : MonoBehaviour {
 					if (yneg == true) {
 						y = yPot + 0;
 					}
-					Instantiate (colCheckPrefab, new Vector3 (x - Mathf.Floor (GameManager.instance.mapSizeX / 2), 1.0f, -y + Mathf.Floor (GameManager.instance.mapSizeY / 2)), Quaternion.Euler (new Vector3 ()));
+
+					colDetector colliderBlock = ((GameObject)Instantiate (colCheckPrefab, new Vector3 (x - Mathf.Floor (GameManager.instance.mapSizeX / 2), 1.0f, -y + Mathf.Floor (GameManager.instance.mapSizeY / 2)), Quaternion.Euler (new Vector3 ()))).GetComponent<colDetector> ();
+					colliderBlock.gridPosition = new Vector2 (x, y);
+					colliderBlock.colGridPosition = new Vector2 (-i, -j);
 				}
 				for (int j = 0; j <= 3; j++) {
 					bool xneg = (xPot - i) < 0;
@@ -89,7 +92,9 @@ public class Player : MonoBehaviour {
 					if (yneg == true) {
 						y = yPot + 0;
 					}
-					Instantiate (colCheckPrefab, new Vector3 (x - Mathf.Floor (GameManager.instance.mapSizeX / 2), 1.0f, -y + Mathf.Floor (GameManager.instance.mapSizeY / 2)), Quaternion.Euler (new Vector3 ()));
+					colDetector colliderBlock = ((GameObject)Instantiate (colCheckPrefab, new Vector3 (x - Mathf.Floor (GameManager.instance.mapSizeX / 2), 1.0f, -y + Mathf.Floor (GameManager.instance.mapSizeY / 2)), Quaternion.Euler (new Vector3 ()))).GetComponent<colDetector> ();
+					colliderBlock.gridPosition = new Vector2 (x, y);
+					colliderBlock.colGridPosition = new Vector2 (i, j);
 				}
 			}
 			for (int i = 0; i <= 3; i++) {
@@ -105,7 +110,9 @@ public class Player : MonoBehaviour {
 					if (yneg == true) {
 						y = yPot + 0;
 					}
-					Instantiate (colCheckPrefab, new Vector3 (x - Mathf.Floor (GameManager.instance.mapSizeX / 2), 1.0f, -y + Mathf.Floor (GameManager.instance.mapSizeY / 2)), Quaternion.Euler (new Vector3 ()));
+					colDetector colliderBlock = ((GameObject)Instantiate (colCheckPrefab, new Vector3 (x - Mathf.Floor (GameManager.instance.mapSizeX / 2), 1.0f, -y + Mathf.Floor (GameManager.instance.mapSizeY / 2)), Quaternion.Euler (new Vector3 ()))).GetComponent<colDetector> ();
+					colliderBlock.gridPosition = new Vector2 (x, y);
+					colliderBlock.colGridPosition = new Vector2 (i, -j);
 				}
 				for (int j = 0; j <= 3; j++) {
 					bool xneg = (xPot + i) > (GameManager.instance.mapSizeX - 1);
@@ -119,14 +126,16 @@ public class Player : MonoBehaviour {
 					if (yneg == true) {
 						y = yPot + 0;
 					}
-					Instantiate (colCheckPrefab, new Vector3 (x - Mathf.Floor (GameManager.instance.mapSizeX / 2), 1.0f, -y + Mathf.Floor (GameManager.instance.mapSizeY / 2)), Quaternion.Euler (new Vector3 ()));
+					colDetector colliderBlock = ((GameObject)Instantiate (colCheckPrefab, new Vector3 (x - Mathf.Floor (GameManager.instance.mapSizeX / 2), 1.0f, -y + Mathf.Floor (GameManager.instance.mapSizeY / 2)), Quaternion.Euler (new Vector3 ()))).GetComponent<colDetector> ();
+					colliderBlock.gridPosition = new Vector2 (x, y);
+					colliderBlock.colGridPosition = new Vector2 (-i, j);
 				}
 			}
 		}
-	}*/
+	}
 
-	public void movingHighlight()
-	{
+	 
+	public void movingHighlight () {
 			if (moving == true) {
 				int xPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.x;
 				int yPot = (int)GameManager.instance.players [GameManager.instance.currentPlayerIndex].gridPosition.y;
